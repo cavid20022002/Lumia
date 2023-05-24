@@ -1,6 +1,10 @@
-﻿namespace LumiaProject.Utilities.Extensions
-{
-    public class FileExtension
-    {
-    }
-}
+﻿//namespace LumiaProject.Utilities.Extensions
+//{
+//    //public class FileExtension
+//    //{
+//    //    public async bool CheckFileType(this IFormFile file)
+//    //    {
+
+//    //    }
+//    }
+//}

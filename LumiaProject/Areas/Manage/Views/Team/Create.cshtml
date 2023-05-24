@@ -1,4 +1,6 @@
-﻿@using LumiaProject.Models;
+﻿
+
+@using LumiaProject.Models;
 @model Team 
 <div class="col-12 grid-margin stretch-card">
     <div class="card">
@@ -7,7 +9,7 @@
             <p class="card-description">
                 Create TeamMember
             </p>
-            <form class="forms-sample" method="post">
+            <form class="forms-sample" enctype="multipart/form-data" method="post">
                 <div class="form-group">
                     <label asp-for="Fullname">Fullname</label>
                     <input asp-for="Fullname" class="form-control" placeholder="Fullname">

@@ -31,13 +31,20 @@ namespace LumiaProject.Areas.Manage.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(Team team)
         {
-            if (!ModelState.IsValid) return NotFound();
+            if (!ModelState.IsValid) return View();
             if (team.Photo==null)
             {
                 ModelState.AddModelError("Photo", "Sekil bos gonderile bilmez");
             }
+            string filename = Guid.NewGuid().ToString()+team.Photo.FileName;
+            string path = Path.Combine(_env.WebRootPath, "assets/img", filename);
+            using (FileStream file = new FileStream(path,FileMode.Create))
+            {
+                await team.Photo.CopyToAsync(file);
+            }
 
-            ViewBag.Professions = await _context.Professions.ToListAsync();
+            await _context.Teams.AddAsync(team);
+            await _context.SaveChangesAsync();
             return View();
 
         }
