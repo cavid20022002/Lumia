@@ -1,0 +1,76 @@
+﻿@using LumiaProject.Models;
+@model List<Team>
+@{
+    int count=0;
+
+}
+<div class="content-wrapper">
+    <div class="row">
+
+        <div class="col-lg-12 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Slides</h4>
+                    <a asp-controller="team" asp-action="create" class="btn btn-success">Create Slide</a>
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+
+                                    <th>
+                                        No
+                                    </th>
+                                    <th>
+                                        Image
+                                    </th>
+
+                                    <th>
+                                       Fullname
+                                    </th>
+                                    <th>
+                                        Description
+                                    </th>
+                                    <th>
+                                        Profession
+                                    </th>
+                                    
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (Team team in Model)
+                                {
+                                    count++;
+                                    <tr>
+                                        <td>
+                                            @count
+                                        </td>
+                                        <td>
+                                            <img style="width:130px;height:130px;" src="~/assets/img/team/@team.Image" />
+                                        </td>
+
+                                        <td>
+                                            @team.Fullname
+                                        </td>
+                                        <td>
+                                            @team.Description
+                                        </td>
+                                        <td>
+                                            @team.Profession.Name
+                                        </td>
+                                        <td>
+                                            <a asp-controller="team" asp-action="update" asp-route-id="@team.Id" class="btn btn-warning"><i class="mdi mdi-pencil"></i> </a>
+                                            <a asp-controller="team" asp-action="delete" asp-route-id="@team.Id" class="btn btn-danger"><i class="mdi mdi-delete"></i> </a>
+                                            <a class="btn btn-primary"><i class="mdi mdi-open-in-new"></i> </a>
+                                        </td>
+                                    </tr>
+                                }
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
